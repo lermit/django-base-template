@@ -1,0 +1,22 @@
+django:
+  build: .
+  volumes:
+    - ./:/usr/src/app
+  user: 1000:1000
+#  links:
+#    - mysql:mysql
+#    - postgres:postgres
+  ports:
+    - 8000:8000
+#mysql:
+#  image: mariadb
+#  ports:
+#    - 3306:3306
+#  environment:
+#    - MYSQL_ROOT_PASSWORD=password
+#postgres:
+#  image: postgres
+#  ports:
+#    - 5432:5432
+#  environment:
+#    - POSTGRES_PASSWORD=password
