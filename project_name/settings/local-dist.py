@@ -30,7 +30,7 @@ DATABASES = {
     # MySQL database
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': '{{ project_name }}',
+    #     'NAME': 'my_database',
     #     'USER': 'root',
     #     'PASSWORD': 'password',
     #     'HOST': 'mysql',
