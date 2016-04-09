@@ -27,6 +27,14 @@ DATABASES = {
         #'TEST_CHARSET': 'utf8',
         #'TEST_COLLATION': 'utf8_general_ci',
     },
+    # MySQL database
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': '{{ project_name }}',
+    #     'USER': 'root',
+    #     'PASSWORD': 'password',
+    #     'HOST': 'mysql',
+    # },
     # 'slave': {
     #     ...
     # },

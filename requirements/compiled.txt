@@ -1,6 +1,6 @@
 # Choose your databases adapter
 #psycopg2
-#MySQL-python
+#mysqlclient
 
 # for bcrypt passwords
 bcrypt
