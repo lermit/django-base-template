@@ -59,17 +59,15 @@ Any of these options can added, modified, or removed as you like after creating 
 
 ## How to use this project template to create your project ##
 
-- Create your working environment and virtualenv
-- Make sure you have libffi installed ($ sudo apt-get install libffi-dev)
-- Install Django 1.8 ($ pip install Django>=1.8)
-- $ django-admin.py startproject --template https://github.com/xenith/django-base-template/zipball/master --extension py,md,rst projectname
+- Install docker and docker-compose
+- cd to project folder
+- $ docker run --rm -u $UID:$GID -v "$( pwd ):/usr/src/app" -w "/usr/src/app" django django-admin startproject --template https://github.com/lermit/django-base-template/zipball/master --extension py,md,rst projectname
 - $ cd projectname
-- Uncomment your preferred database adapter in requirements/compiled.txt (MySQL, Postgresql, or skip this step to stick with SQLite)
-- $ pip install -r requirements/local.txt
 - $ cp projectname/settings/local-dist.py projectname/settings/local.py
-- $ python manage.py syncdb
-- $ python manage.py migrate
-- $ python manage.py runserver
+- Uncomment your preferred database adapter in requirements/compiled.txt, projectname/settings/local.py and docker-compose.yml (MySQL, Postgresql, or skip this step to stick with SQLite)
+- $ docker-compose up -d
+- $ docker-compose run -u 0 django python manage.py makemigrations
+- $ docker-compose run django python manage.py migrate
 
 That's all you need to do to get the project ready for development. When you deploy your project into production, you should look into getting certain settings from environment variables or other external sources. (See SECRET_KEY for an example.)
 
