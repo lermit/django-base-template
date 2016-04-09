@@ -65,9 +65,12 @@ Any of these options can added, modified, or removed as you like after creating 
 - $ cd projectname
 - $ cp projectname/settings/local-dist.py projectname/settings/local.py
 - Uncomment your preferred database adapter in requirements/compiled.txt, projectname/settings/local.py and docker-compose.yml (MySQL, Postgresql, or skip this step to stick with SQLite)
+- $ docker-compose build
 - $ docker-compose up -d
 - $ docker-compose run -u 0 django python manage.py makemigrations
 - $ docker-compose run django python manage.py migrate
+
+You can, now, access django website on port 8080 of docker server ip.
 
 That's all you need to do to get the project ready for development. When you deploy your project into production, you should look into getting certain settings from environment variables or other external sources. (See SECRET_KEY for an example.)
 
