@@ -18,18 +18,25 @@
   <meta name="author" content="{% block meta_author %}{% endblock %}">
 
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   {% block meta %}
   {% endblock %}
 
   {# use the CDN to get bootstrap css. can not be inside compress css block #}
   {% block cdn_css %}
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css" crossorigin="anonymous">
   {% endblock cdn_css %}
 
   {% compress css %}
   <link rel="stylesheet" href="{% static 'css/app.css' %}">
+  <style>
+  /* Move down content because we have a fixed navbar that is 50px tall */
+  body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+  </style>
   {% block css %}{% endblock %}
   {% endcompress %}
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
@@ -49,17 +56,32 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
   <header>
-    {% block header %}{% endblock %}
+    {% block header %}
+       <nav class="navbar navbar-light navbar-fixed-top bg-faded" role="navigation">
+         <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="navbar-collapsing">
+           &#9776;
+         </button>
+         <div class="collapse navbar-toggleable-xs" id="navbar-collapsing">
+           <a class="navbar-brand" href="/">Project name</a>
+           <div class="nav navbar-nav">
+             <a class="nav-item nav-link" href="{% url 'home' %}">Home<span class="sr-only"> (current)</span></a>
+             <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
+             <a class="nav-item nav-link" href="{% url 'contact' %}">Contact</a>
+           </div>
+         </div>
+       </nav>
+    {% endblock %}
   </header>
 
   <div role="main">
     {% block content %}{% endblock %}
   </div>
 
-  <footer>
+  <footer class="bd-footer text-muted">
     {% block footer %}
     <div class="container">
       <hr>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <p>&copy; Company 2014</p>
     </div>
     {% endblock footer %}
@@ -72,7 +94,7 @@
   {% block cdn_js %}
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}js/libs/jquery-2.1.1.min.js"><\/script>')</script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js" crossorigin="anonymous"></script>
   {% endblock cdn_js %}
 
   <!-- scripts concatenated and minified via django-compressor -->
